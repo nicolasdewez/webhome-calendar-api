@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Connectors -->
+        <service id="webhome_calendar.connector.mock" class="Ndewez\WebHome\CalendarApiBundle\V0\Connector\WebHomeCalendarConnectorMock">
+            <argument type="service">
+                <service class="Ndewez\WebHome\CalendarApiBundle\Tests\V0\Utils\CalendarBuilder">
+                </service>
+            </argument>
+            <argument type="service">
+                <service class="Ndewez\WebHome\CalendarApiBundle\Tests\V0\Utils\JobBuilder">
+                </service>
+            </argument>
+        </service>
+
+        <service id="webhome_calendar.connector" class="Ndewez\WebHome\CalendarApiBundle\V0\Connector\WebHomeCalendarConnector">
+            <argument type="service" id="webhome.client" />
+            <argument type="string" />
+            <argument type="string">0</argument>
+        </service>
+
+        <!-- Client -->
+        <service id="webhome_calendar.client" class="Ndewez\WebHome\CalendarApiBundle\V0\Service\WebHomeCalendarClient">
+            <argument type="service" id="webhome_calendar.connector"/>
+        </service>
+    </services>
+</container>
