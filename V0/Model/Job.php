@@ -2,7 +2,7 @@
 
 namespace Ndewez\WebHome\CalendarApiBundle\V0\Model;
 
-use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Job.
@@ -12,49 +12,49 @@ class Job
     /**
      * @var int
      *
-     * @Type("integer")
+     * @Serializer\Type("integer")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @Type("string")
+     * @Serializer\Type("string")
      */
     private $code;
 
     /**
      * @var string
      *
-     * @Type("string")
+     * @Serializer\Type("string")
      */
     private $title;
 
     /**
      * @var \DateTime
      *
-     * @Type("DateTime<'H:i:s'>")
+     * @Serializer\Type("DateTime<'H:i:s'>")
      */
     private $startTime;
 
     /**
      * @var \DateTime
      *
-     * @Type("DateTime<'H:i:s'>")
+     * @Serializer\Type("DateTime<'H:i:s'>")
      */
     private $endTime;
 
     /**
      * @var int
      *
-     * @Type("integer")
+     * @Serializer\Type("integer")
      */
     private $duration;
 
     /**
      * @var bool
      *
-     * @Type("boolean")
+     * @Serializer\Type("boolean")
      */
     private $active;
 
@@ -184,7 +184,7 @@ class Job
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isActive()
     {
@@ -192,7 +192,7 @@ class Job
     }
 
     /**
-     * @param boolean $active
+     * @param bool $active
      *
      * @return Job
      */

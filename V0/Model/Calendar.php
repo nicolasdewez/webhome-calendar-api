@@ -2,7 +2,7 @@
 
 namespace Ndewez\WebHome\CalendarApiBundle\V0\Model;
 
-use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Calendar.
@@ -12,21 +12,28 @@ class Calendar
     /**
      * @var int
      *
-     * @Type("integer")
+     * @Serializer\Type("integer")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @Type("string")
+     * @Serializer\Type("string")
      */
     private $title;
 
     /**
+     * @var GoogleConnection[]
+     *
+     * @Serializer\Type("array<Ndewez\WebHome\CalendarApiBundle\V0\Model\GoogleConnection>")
+     */
+    private $googleConnections;
+
+    /**
      * @var bool
      *
-     * @Type("boolean")
+     * @Serializer\Type("boolean")
      */
     private $active;
 
@@ -76,7 +83,27 @@ class Calendar
     }
 
     /**
-     * @return boolean
+     * @return GoogleConnection[]
+     */
+    public function getGoogleConnections()
+    {
+        return $this->googleConnections;
+    }
+
+    /**
+     * @param GoogleConnection[] $googleConnections
+     *
+     * @return Calendar
+     */
+    public function setGoogleConnections(array $googleConnections)
+    {
+        $this->googleConnections = $googleConnections;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
      */
     public function isActive()
     {
@@ -84,7 +111,7 @@ class Calendar
     }
 
     /**
-     * @param boolean $active
+     * @param bool $active
      *
      * @return Calendar
      */
